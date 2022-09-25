@@ -1,0 +1,20 @@
+dataset: bigscience-biomedical/scitail
+subset: scitail_bigbio_te
+templates:
+  ea58d4dc-4a46-4419-8312-4ba5961c0260: !Template
+    answer_choices: yes ||| no
+    id: ea58d4dc-4a46-4419-8312-4ba5961c0260
+    jinja: 'Given that {{premise}} Does it follow that {{hypothesis}}
+      {{ answer_choices | join('' or '') }}?
+      |||{% if label == "entailment" %}
+      {{answer_choices[0]}}
+      {% else %}
+      {{answer_choices[1]}}
+      {% endif %}'
+    metadata: !TemplateMetadata
+      choices_in_prompt: true
+      metrics:
+      - Accuracy
+      original_task: true
+    name: Yes/No Entailment Framing
+    reference: ''
