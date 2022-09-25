@@ -58,6 +58,9 @@ python main.py \
 
 ## Step 2: Make a task suited to your dataset
 
+### <span style="color:red">**TLDR**. Move the contents to `lm_eval/tasks` into your installation of `lm_evaluation_harness`.</span>
+
+<br>
 We now need to make a task via the PromptSourceTask template. To do this, we make a `Task` file and place it in `lm-evaluation-harness/lm_eval/tasks`.
 
 We follow the [recipe](https://github.com/bigscience-workshop/lm-evaluation-harness/blob/master/templates/new_prompt_source_task.py) provided as follows:
@@ -135,6 +138,9 @@ TASK_REGISTRY = {
 
 ## Step 3: Make your prompts
 
+### <span style="color:red">**TLDR**. Move the template file in `promptsource/templates.yaml` into your installation of promptsource. Place this file in the folder: `promptsource/promptsource/templates/bigscience-biomedical/scitail/scitail-bigbio-te`</span>
+
+<br>
 I will not cover how to make a prompt a priori since we will be borrowing a prompt from [here](https://github.com/OpenBioLink/promptsource/tree/main/promptsource/templates). Specifically, I will modify the `scitail` prompt.
 
 The prompt is below:
