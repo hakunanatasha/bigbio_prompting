@@ -185,7 +185,7 @@ Run your model with the appropriate BLOOM checkpoint:
 python main.py \
     --model_api_name 'hf-causal' \
     --model_args use_accelerate=True,pretrained='bigscience/bigscience-small-testing' \
-    --task_name bigbioscitail
+    --task_name bigbio_scitail
 
 You can use any of the specific arguments (ex: `template_names`) as necessary.
 
