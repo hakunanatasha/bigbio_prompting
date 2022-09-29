@@ -2,7 +2,7 @@
 2022.09.25
 N. Seelam
 
-This path tests the `bigbio` version of SciTail. We generate prompts
+This path tests the `bigbio` version of GAD; We generate prompts
 
 """
 from lm_eval.api.task import PromptSourceTask
@@ -10,10 +10,10 @@ from lm_eval.api.task import PromptSourceTask
 _CITATION = """"""
 
 
-class BBSciTail(PromptSourceTask):
+class GAD(PromptSourceTask):
 
-    DATASET_PATH = "bigscience-biomedical/scitail"
-    DATASET_NAME = "scitail_bigbio_te"
+    DATASET_PATH = "bigscience-biomedical/gad"
+    DATASET_NAME = "gad_blurb_bigbio_text"
 
     def has_training_docs(self):
         return True

@@ -4,7 +4,16 @@ from promptsource.templates import DatasetTemplates
 
 from lm_eval.api.task import Task
 
+# -----------------------
+# Big Bio Tasks
+from . import mednli
+from . import gad
+from . import blurb
+from . import biosses
+from . import bioasq_task_b
 from . import bigbioscitail
+
+# -----------------------
 from . import anli
 from . import blimp
 from . import diabla
@@ -40,8 +49,17 @@ logger = logging.getLogger(__name__)
 
 
 TASK_REGISTRY = {
-    # CUSTOM
-    "bigbioscitail": bigbioscitail.BBSciTail,
+    # BigBio
+    "bigbio_scitail": bigbioscitail.BBSciTail,
+    "bigbio_biosses": biosses.Biosses,
+    "bigbio_gad": gad.GAD,
+    "bigbio_mednli": mednli.MedNLI,
+    "bigbio_bioasq_task_b": bioasq_task_b.BioasqTaskB,
+    "bigbio_blurb_bc2gm": blurb.BlurbBC2GM,
+    "bigbio_blurb_bc5chem": blurb.BlurbBC5Chem,
+    "bigbio_blurb_bc5disease": blurb.BlurbBC5Disease,
+    "bigbio_blurb_jnlpba": blurb.BlurbJNLPBA,
+    "bigbio_blurb_ncbi_disease": blurb.BlurbNCBIDisease,
     # GLUE
     "cola": glue.CoLA,
     "mnli": glue.MNLI,
@@ -289,7 +307,9 @@ def _get_task_from_registry(task_name: str) -> Type[Task]:
         raise KeyError(f"`{task_name}` is missing from the task registry.")
 
 
-def _get_templates_from_task(task: Union[Task, Type[Task]]) -> DatasetTemplates:
+def _get_templates_from_task(
+    task: Union[Task, Type[Task]]
+) -> DatasetTemplates:
     dataset_name = (
         task.DATASET_PATH
         if task.DATASET_NAME is None
@@ -332,5 +352,7 @@ def _split_task_template_key(task_template_key: str) -> Tuple[str, str]:
     """Splits a task template key as returned from `_get_task_template_key`
     into it's constituent parts: (task name, template name).
     """
-    task_name, template_name = task_template_key.split(_TASK_TEMPLATE_KEY_SEP, 1)
+    task_name, template_name = task_template_key.split(
+        _TASK_TEMPLATE_KEY_SEP, 1
+    )
     return task_name, template_name
