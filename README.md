@@ -181,7 +181,7 @@ mkdir -p promptsource/promptsource/templates/bigscience-biomedical/scitail/scita
 ## Step 4: Run the model
 
 Run your model with the appropriate BLOOM checkpoint:
-
+```
 python main.py \
     --model_api_name 'hf-causal' \
     --model_args use_accelerate=True,pretrained='bigscience/bigscience-small-testing' \
